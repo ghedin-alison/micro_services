@@ -30,3 +30,6 @@ chmod -R 777 ./
 ```unix
 python manage.py makemigrations
 ```
+```unix
+python manage.py migrate
+```
