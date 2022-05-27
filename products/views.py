@@ -1,6 +1,8 @@
+import random
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from .models import Product
+from rest_framework.views import APIView
+from .models import Product, User
 from .serializers import ProductSerializer
 
 
@@ -15,7 +17,6 @@ class ProductViewSet(viewsets.ViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-
 
     def retrieve_product(self, request, pk=None):  # get /api/products/<str:id>
         product = Product.objects.get(id=pk)
@@ -33,3 +34,13 @@ class ProductViewSet(viewsets.ViewSet):
         product = Product.objects.get(id=pk)
         product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class UserAPIView(APIView):
+    def get(self, _):
+        users = User.objects.all()
+        user = random.choice(users)
+        print(user)
+        return Response({
+            "id": user.id
+        })
