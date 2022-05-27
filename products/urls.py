@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from views import ProductViewSet
+from .views import ProductViewSet
 
 urlpatterns = [
     path('products', ProductViewSet.as_view({
@@ -11,6 +11,5 @@ urlpatterns = [
         'get': 'retrieve_product',
         'update': 'update_product',
         'delete': 'destroy_product',
-})),
+    })),
 ]
-
