@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.response import Response
 from .models import Product
 from .serializers import ProductSerializer
@@ -11,13 +11,25 @@ class ProductViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
     def create_product(self, request):  # post /api/products
-        pass
+        serializer = ProductSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
 
     def retrieve_product(self, request, pk=None):  # get /api/products/<str:id>
-        pass
+        product = Product.objects.get(id=pk)
+        serializer = ProductSerializer(product)
+        return Response(serializer.data)
 
     def update_product(self, request, pk=None):  # update /api/products/<str:id>
-        pass
+        product = Product.objects.get(id=pk)
+        serializer = ProductSerializer(instance=product, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
     def destroy_product(self, request, pk=None):  # delete /api/products/<str:id>
-        pass
+        product = Product.objects.get(id=pk)
+        product.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
