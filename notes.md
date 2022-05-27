@@ -16,3 +16,17 @@ docker-compose exec backend sh
 python manage.py startapp products
 ```
  - Now, the directory products will appear on microservices.
+
+# Access trouble with docker
+
+I don't know if this will cause security problems, but this was the only way 
+to let the file available. Should confirm with a senior. 
+```unix
+chmod -R 777 ./
+```
+
+
+# Makemigrations
+```unix
+python manage.py makemigrations
+```
