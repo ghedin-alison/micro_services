@@ -33,3 +33,9 @@ python manage.py makemigrations
 ```unix
 python manage.py migrate
 ```
+
+### To find the users from db remember to save the database at the IDE.
+
+
+ - After set the main project, return to this one and set the rabbitmq.
+ - Create a producer.py file
