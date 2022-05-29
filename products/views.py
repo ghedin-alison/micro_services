@@ -3,6 +3,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Product, User
+from .producer import publish
 from .serializers import ProductSerializer
 
 
@@ -10,6 +11,7 @@ class ProductViewSet(viewsets.ViewSet):
     def list_products(self, request):  # get /api/products
         products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)
+        publish()
         return Response(serializer.data)
 
     def create_product(self, request):  # post /api/products
