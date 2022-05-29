@@ -39,3 +39,15 @@ python manage.py migrate
 
  - After set the main project, return to this one and set the rabbitmq.
  - Create a producer.py file
+ - Add publish method on views
+ - Create a consumer.py file
+ - up docker-compose
+ - access docker container
+```unix
+docker-compose exec backend sh
+```
+- activate the consumer
+```unix
+python consumer.py
+```
+
