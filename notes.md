@@ -66,3 +66,5 @@ docker-compose up --build
 ```unix
 docker-compose up -d db
 ```
+### Send events every time a product has been created, updated or deleted
+ - Change the publish method on producer
