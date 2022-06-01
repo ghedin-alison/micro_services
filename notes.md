@@ -51,3 +51,18 @@ docker-compose exec backend sh
 python consumer.py
 ```
 
+ - The communication between the two projects its working. Tests @postman.
+
+### Update Dockerfile to keep only one consumer tab
+ - update the Dockerfile and docker-compose to get ready when compose starts
+ - As the docker files were updated run:
+```unix
+docker-compose up --build
+```
+ - A lot of issues related to access .dbdata. This is because docker was trying to access.
+ - To solve this docker problem, just create a .dockerignore and add the folder.
+
+ - Then restart again the server and run this to start db
+```unix
+docker-compose up -d db
+```
