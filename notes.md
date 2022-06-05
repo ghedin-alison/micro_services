@@ -68,3 +68,9 @@ docker-compose up -d db
 ```
 ### Send events every time a product has been created, updated or deleted
  - Change the publish method on producer
+
+### likes treatment
+ - When need to use two localhost on docker could be useful change:
+  "localhost or 0.0.0.0" by "host.docker.internal". 
+ - Change the settings to accept the "host.docker.internal".
+ - Add extra_hosts: "host.docker.internal:host-gateway" at docker-compose
